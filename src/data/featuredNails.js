@@ -1,6 +1,16 @@
-export const featuredNails = [
-  { src: '/images/gallery/nail1.jpeg', alt: 'Nail design photo 1' },
-  { src: '/images/gallery/nail2.jpeg', alt: 'Nail design photo 2' },
-  { src: '/images/gallery/nail3.jpeg', alt: 'Nail design photo 3' }
-];
+export const featuredNailsByLang = {
+  en: [
+    { src: '/images/gallery/nail1.jpeg', alt: 'Nail design photo 1' },
+    { src: '/images/gallery/nail2.jpeg', alt: 'Nail design photo 2' },
+    { src: '/images/gallery/nail3.jpeg', alt: 'Nail design photo 3' }
+  ],
+  fr: [
+    { src: '/images/gallery/nail1.jpeg', alt: 'Photo de design d’ongles 1' },
+    { src: '/images/gallery/nail2.jpeg', alt: 'Photo de design d’ongles 2' },
+    { src: '/images/gallery/nail3.jpeg', alt: 'Photo de design d’ongles 3' }
+  ]
+};
 
+export function getFeaturedNails(lang) {
+  return featuredNailsByLang[lang] || featuredNailsByLang.en;
+}

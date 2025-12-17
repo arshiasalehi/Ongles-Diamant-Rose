@@ -106,6 +106,28 @@
   gap: 0.65rem;
 }
 
+.langToggle {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(212, 163, 115, 0.22);
+  color: var(--ink-900);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.langToggle:hover {
+  border-color: rgba(212, 163, 115, 0.55);
+}
+
+.langToggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(212, 163, 115, 0.24);
+}
+
 .bookDesktop {
   display: none;
 }
@@ -236,10 +258,31 @@
   padding: 1rem 1.25rem 1.25rem;
   border-top: 1px solid rgba(214, 177, 191, 0.35);
   padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+  display: grid;
+  gap: 0.75rem;
 }
 
 .bookMobile {
   width: 100%;
+}
+
+.langToggleMobile {
+  width: 100%;
+  border-radius: 999px;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(212, 163, 115, 0.30);
+  background: rgba(255, 255, 255, 0.75);
+  font-weight: 800;
+  color: var(--ink-900);
+}
+
+.langToggleMobile:hover {
+  border-color: rgba(212, 163, 115, 0.55);
+}
+
+.langToggleMobile:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(212, 163, 115, 0.24);
 }
 
 @media (min-width: 900px) {

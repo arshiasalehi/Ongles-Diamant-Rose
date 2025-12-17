@@ -4,15 +4,30 @@
   background: linear-gradient(135deg, rgba(212, 163, 115, 0.16), rgba(255, 255, 255, 0.65));
 }
 
-.track {
+.scroller {
   display: flex;
-  gap: 1.25rem;
+  width: max-content;
   padding: 0.9rem 0;
   white-space: nowrap;
-  animation: scroll 18s linear infinite;
+  will-change: transform;
   color: var(--ink-900);
   font-weight: 800;
   letter-spacing: 0.02em;
+  transform: translate3d(0, 0, 0);
+  animation: marquee 50s linear infinite;
+}
+
+.track {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.chunk {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.25rem;
 }
 
 .item {
@@ -23,7 +38,7 @@
   color: var(--rose-600);
 }
 
-@keyframes scroll {
+@keyframes marquee {
   from {
     transform: translateX(0);
   }
@@ -32,10 +47,8 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .track {
-    animation: none;
-    justify-content: center;
-    text-align: center;
+@media (min-width: 900px) {
+  .scroller {
+    animation-duration: 50s;
   }
 }

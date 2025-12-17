@@ -2,6 +2,7 @@
   "name": "nail",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://arshiasalehi.github.io/Ongles-Diamant-Rose",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
@@ -11,20 +12,22 @@
     "react-dom": "^19.2.3",
     "react-router": "^6.26.2",
     "react-router-dom": "^6.26.2",
-    "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "gh-pages": "^6.3.0",
+    "jsdom": "^26.0.0",
+    "vite": "^5.4.11",
+    "vitest": "^2.1.8"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "browserslist": {
     "production": [

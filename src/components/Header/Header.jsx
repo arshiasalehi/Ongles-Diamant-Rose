@@ -5,21 +5,23 @@ import Container from '../ui/Container';
 import ButtonLink from '../ui/ButtonLink';
 import { DiamondIcon } from '../ui/icons';
 import { BOOKING_URL, SALON_NAME } from '../../constants';
+import { useI18n } from '../../i18n/I18nProvider';
 import styles from './Header.module.css';
 
-const navItems = [
-  { to: '/', label: 'Home' },
-  { to: '/services', label: 'Services' },
-  { to: '/gallery', label: 'Gallery' },
-  { to: '/about', label: 'About Us' },
-  { to: '/contact', label: 'Contact' }
-];
-
 export default function Header() {
+  const { lang, toggleLang, t } = useI18n();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const drawerId = useId();
   const firstLinkRef = useRef(null);
+
+  const navItems = [
+    { to: '/', label: t('nav.home') },
+    { to: '/services', label: t('nav.services') },
+    { to: '/gallery', label: t('nav.gallery') },
+    { to: '/about', label: t('nav.about') },
+    { to: '/contact', label: t('nav.contact') }
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -53,14 +55,14 @@ export default function Header() {
       <button
         type="button"
         className={styles.backdrop}
-        aria-label="Close menu"
+        aria-label={t('common.close')}
         onClick={() => setMobileOpen(false)}
       />
-      <div className={styles.drawer} id={drawerId} role="dialog" aria-modal="true" aria-label="Menu">
+      <div className={styles.drawer} id={drawerId} role="dialog" aria-modal="true" aria-label={t('header.menu')}>
         <div className={styles.drawerHeader}>
-          <span className={styles.drawerTitle}>Menu</span>
+          <span className={styles.drawerTitle}>{t('header.menu')}</span>
         </div>
-        <nav className={styles.navMobile} aria-label="Mobile primary">
+        <nav className={styles.navMobile} aria-label={t('header.mobilePrimary')}>
           {navItems.map((item, index) => (
             <NavLink
               key={item.to}
@@ -77,6 +79,9 @@ export default function Header() {
           ))}
         </nav>
         <div className={styles.drawerFooter}>
+          <button type="button" className={styles.langToggleMobile} onClick={toggleLang} aria-label={t('common.language')}>
+            {lang === 'fr' ? 'EN' : 'FR'}
+          </button>
           <ButtonLink
             href={BOOKING_URL}
             target="_blank"
@@ -84,7 +89,7 @@ export default function Header() {
             variant="primary"
             className={styles.bookMobile}
           >
-            Book Now
+            {t('common.bookNow')}
           </ButtonLink>
         </div>
       </div>
@@ -94,14 +99,14 @@ export default function Header() {
   return (
     <header className={[styles.header, scrolled ? styles.scrolled : ''].filter(Boolean).join(' ')}>
       <a className={styles.skipLink} href="#main">
-        Skip to content
+        {t('common.skipToContent')}
       </a>
       <Container className={styles.inner}>
         <div className={styles.brand}>
           <NavLink
             to="/"
             className={styles.brandLink}
-            aria-label={`${SALON_NAME} — Home`}
+            aria-label={`${SALON_NAME} — ${t('nav.home')}`}
             onClick={() => setMobileOpen(false)}
           >
             <span className={styles.brandIcon} aria-hidden="true">
@@ -114,7 +119,7 @@ export default function Header() {
           </NavLink>
         </div>
 
-        <nav className={styles.navDesktop} aria-label="Primary">
+        <nav className={styles.navDesktop} aria-label={t('header.primary')}>
           {navItems.map((item) => (
             <NavLink
               key={item.to}
@@ -138,13 +143,17 @@ export default function Header() {
             size="sm"
             className={styles.bookDesktop}
           >
-            Book Now
+            {t('common.bookNow')}
           </ButtonLink>
+
+          <button type="button" className={styles.langToggle} onClick={toggleLang} aria-label={t('common.language')}>
+            {lang === 'fr' ? 'EN' : 'FR'}
+          </button>
 
           <button
             type="button"
             className={styles.hamburger}
-            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-label={mobileOpen ? t('header.closeMenu') : t('header.openMenu')}
             aria-expanded={mobileOpen}
             aria-controls={drawerId}
             onClick={() => setMobileOpen((open) => !open)}

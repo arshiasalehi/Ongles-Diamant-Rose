@@ -160,6 +160,26 @@
   text-decoration: underline;
 }
 
+.langButton {
+  border: 1px solid rgba(212, 163, 115, 0.30);
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: 999px;
+  padding: 0.65rem 0.95rem;
+  font-weight: 800;
+  color: var(--ink-900);
+  cursor: pointer;
+  width: fit-content;
+}
+
+.langButton:hover {
+  border-color: rgba(212, 163, 115, 0.55);
+}
+
+.langButton:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(212, 163, 115, 0.24);
+}
+
 .bottom {
   display: flex;
   justify-content: space-between;

@@ -81,4 +81,3 @@ export function ShieldCheckIcon({ size = 18, className = '' }) {
     </svg>
   );
 }
-

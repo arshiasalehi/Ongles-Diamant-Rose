@@ -1,18 +1,23 @@
 import { Link } from 'react-router-dom';
 import Container from '../ui/Container';
 import { BOOKING_URL, SALON_NAME } from '../../constants';
-import site from '../../data/site.json';
+import siteEn from '../../data/site.en.json';
+import siteFr from '../../data/site.fr.json';
+import { useI18n } from '../../i18n/I18nProvider';
 import styles from './Footer.module.css';
 
-const footerLinks = [
-  { to: '/', label: 'Home' },
-  { to: '/services', label: 'Services' },
-  { to: '/gallery', label: 'Gallery' },
-  { to: '/about', label: 'About Us' },
-  { to: '/contact', label: 'Contact' }
-];
-
 export default function Footer() {
+  const { lang, toggleLang, t } = useI18n();
+  const site = lang === 'fr' ? siteFr : siteEn;
+
+  const footerLinks = [
+    { to: '/', label: t('nav.home') },
+    { to: '/services', label: t('nav.services') },
+    { to: '/gallery', label: t('nav.gallery') },
+    { to: '/about', label: t('nav.about') },
+    { to: '/contact', label: t('nav.contact') }
+  ];
+
   const encodedAddress = encodeURIComponent(site.address);
   const mapEmbedUrl = `https://www.google.com/maps?q=${encodedAddress}&output=embed`;
   const mapOpenUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
@@ -22,7 +27,7 @@ export default function Footer() {
       <div className={styles.mapLayer} aria-hidden="true">
         <iframe
           className={styles.mapFrame}
-          title="Map"
+          title={t('footer.mapTitle')}
           src={mapEmbedUrl}
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
@@ -30,8 +35,8 @@ export default function Footer() {
         />
       </div>
       <Container className={styles.inner}>
-        <div className={styles.hoursCircle} aria-label="Working hours">
-          <div className={styles.circleTitle}>Working Hours</div>
+        <div className={styles.hoursCircle} aria-label={t('footer.workingHours')}>
+          <div className={styles.circleTitle}>{t('footer.workingHours')}</div>
           <ul className={styles.hours}>
             {site.workingHours.map((row) => (
               <li key={row.label} className={styles.hoursRow}>
@@ -46,12 +51,12 @@ export default function Footer() {
           <div className={styles.footerTop}>
             <div className={styles.brand}>
               <div className={styles.brandName}>{SALON_NAME}</div>
-              <div className={styles.brandCity}>Montréal</div>
+              <div className={styles.brandCity}>{site.city}</div>
             </div>
 
             <div className={styles.columns}>
               <div className={styles.col}>
-                <div className={styles.colTitle}>Contact</div>
+                <div className={styles.colTitle}>{t('footer.contact')}</div>
                 <a className={styles.link} href={mapOpenUrl} target="_blank" rel="noreferrer">
                   {site.address}
                 </a>
@@ -64,8 +69,8 @@ export default function Footer() {
               </div>
 
               <div className={styles.col}>
-                <div className={styles.colTitle}>Explore</div>
-                <nav aria-label="Footer navigation" className={styles.footerNav}>
+                <div className={styles.colTitle}>{t('footer.explore')}</div>
+                <nav aria-label={t('a11y.footerNavigation')} className={styles.footerNav}>
                   {footerLinks.map((item) => (
                     <Link key={item.to} className={styles.footerNavLink} to={item.to}>
                       {item.label}
@@ -75,22 +80,25 @@ export default function Footer() {
               </div>
 
               <div className={styles.col}>
-                <div className={styles.colTitle}>Links</div>
+                <div className={styles.colTitle}>{t('footer.links')}</div>
                 <a className={styles.footerNavLink} href={BOOKING_URL} target="_blank" rel="noreferrer">
-                  Book Now
+                  {t('common.bookNow')}
                 </a>
                 <a className={styles.footerNavLink} href={site.instagramUrl} target="_blank" rel="noreferrer">
-                  Instagram
+                  {t('footer.instagram')}
                 </a>
+                <button type="button" className={styles.langButton} onClick={toggleLang} aria-label={t('common.language')}>
+                  {lang === 'fr' ? 'EN' : 'FR'}
+                </button>
               </div>
             </div>
           </div>
 
           <div className={styles.bottom}>
             <span className={styles.small}>
-              © {new Date().getFullYear()} {SALON_NAME}. All rights reserved.
+              © {new Date().getFullYear()} {SALON_NAME}. {t('footer.rights')}
             </span>
-            <span className={styles.small}>Designed with care.</span>
+            <span className={styles.small}>{t('footer.designedWithCare')}</span>
           </div>
         </div>
       </Container>

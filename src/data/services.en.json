@@ -1,0 +1,43 @@
+[
+  {
+    "id": 1,
+    "title": "Gel Manicure",
+    "subtitle": "Long-lasting shine with a clean finish",
+    "price": "From $45",
+    "duration": "45–60 min",
+    "details": "Careful prep, gel application, shaping, and glossy finishing. Ideal for long wear."
+  },
+  {
+    "id": 2,
+    "title": "Spa Pedicure",
+    "subtitle": "Full care and relaxation",
+    "price": "From $55",
+    "duration": "60 min",
+    "details": "Soak, exfoliation, cuticle care, hydration, light massage, and polish application."
+  },
+  {
+    "id": 3,
+    "title": "Acrylic Set",
+    "subtitle": "Structure and elegance",
+    "price": "From $60",
+    "duration": "75–90 min",
+    "details": "Acrylic application with a customized shape. Works with a variety of lengths and styles."
+  },
+  {
+    "id": 4,
+    "title": "Nail Art",
+    "subtitle": "Custom designs",
+    "price": "From $10",
+    "duration": "15–30 min",
+    "details": "Add a diamond touch: patterns, chrome, ombré, fine details. Price varies by complexity."
+  },
+  {
+    "id": 5,
+    "title": "Removal + Care",
+    "subtitle": "Gentle and protective",
+    "price": "From $20",
+    "duration": "30 min",
+    "details": "Gentle removal, shaping, nourishing treatment, and protective finish."
+  }
+]
+

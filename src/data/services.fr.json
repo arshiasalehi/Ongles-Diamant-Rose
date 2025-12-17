@@ -1,0 +1,43 @@
+[
+  {
+    "id": 1,
+    "title": "Manucure Gel",
+    "subtitle": "Brillance durable et finition nette",
+    "price": "À partir de $45",
+    "duration": "45–60 min",
+    "details": "Préparation soignée, application de gel, mise en forme et finition brillante. Idéal pour une tenue longue durée."
+  },
+  {
+    "id": 2,
+    "title": "Pédicure Spa",
+    "subtitle": "Soin complet et détente",
+    "price": "À partir de $55",
+    "duration": "60 min",
+    "details": "Bain, gommage, soin des cuticules, hydratation, massage léger et application de couleur."
+  },
+  {
+    "id": 3,
+    "title": "Pose Acrylique",
+    "subtitle": "Structure et élégance",
+    "price": "À partir de $60",
+    "duration": "75–90 min",
+    "details": "Pose acrylique avec mise en forme personnalisée. Convient aux longueurs et styles variés."
+  },
+  {
+    "id": 4,
+    "title": "Nail Art",
+    "subtitle": "Designs sur-mesure",
+    "price": "À partir de $10",
+    "duration": "15–30 min",
+    "details": "Ajoutez une touche diamant: motifs, chrome, ombré, détails fins. Le prix varie selon la complexité."
+  },
+  {
+    "id": 5,
+    "title": "Retrait + Soin",
+    "subtitle": "Douceur et protection",
+    "price": "À partir de $20",
+    "duration": "30 min",
+    "details": "Retrait délicat du produit, mise en forme, soin nourrissant et finition protectrice."
+  }
+]
+
