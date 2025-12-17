@@ -8,6 +8,7 @@ import servicesFr from '../data/services.fr.json';
 import { getFeaturedNails } from '../data/featuredNails';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { useI18n } from '../i18n/I18nProvider';
+import { toPublicUrl } from '../utils/publicUrl';
 import styles from './ServicesPage.module.css';
 
 export default function ServicesPage() {
@@ -29,7 +30,7 @@ export default function ServicesPage() {
         <section className={styles.intro}>
           <Reveal className={styles.introTop}>
             <img
-              src={randomNail.src}
+              src={toPublicUrl(randomNail.src)}
               alt={randomNail.alt}
               className={styles.introImage}
               loading="lazy"
@@ -84,7 +85,7 @@ export default function ServicesPage() {
           <Reveal delayMs={140}>
             <ServicesAccordion
               services={services}
-              supportingImageSrc={randomSupportNail.src}
+              supportingImageSrc={toPublicUrl(randomSupportNail.src)}
               supportingImageAlt={randomSupportNail.alt}
             />
           </Reveal>

@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useI18n } from '../../i18n/I18nProvider';
+import { toPublicUrl } from '../../utils/publicUrl';
 import styles from './HeroSlider.module.css';
 
 export default function HeroSlider({ images, intervalMs = 3000 }) {
@@ -22,7 +23,7 @@ export default function HeroSlider({ images, intervalMs = 3000 }) {
       {safeImages.map((img, i) => (
         <img
           key={img.src}
-          src={img.src}
+          src={toPublicUrl(img.src)}
           alt={img.alt}
           className={[styles.image, i === index ? styles.active : styles.inactive]
             .filter(Boolean)

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import Reveal from '../ui/Reveal';
 import { useI18n } from '../../i18n/I18nProvider';
+import { toPublicUrl } from '../../utils/publicUrl';
 import styles from './GalleryGrid.module.css';
 
 const DEFAULT_CATEGORIES = [
@@ -127,7 +128,7 @@ export default function GalleryGrid({ images, categories = DEFAULT_CATEGORIES, i
         </div>
         <div className={styles.lightboxImageWrap}>
           <img
-            src={selected.src}
+            src={toPublicUrl(selected.src)}
             alt={selected.alt}
             className={styles.lightboxImage}
             loading="eager"
@@ -137,7 +138,7 @@ export default function GalleryGrid({ images, categories = DEFAULT_CATEGORIES, i
         <div className={styles.lightboxActions}>
           <a
             className={styles.lightboxAction}
-            href={selected.src}
+            href={toPublicUrl(selected.src)}
             download={fileNameFromSrc(selected.src)}
           >
             {t('gallery.download')}
@@ -188,7 +189,7 @@ export default function GalleryGrid({ images, categories = DEFAULT_CATEGORIES, i
               aria-label={`${t('gallery.openImage')}: ${img.alt || t('gallery.imageFallback')}`}
             >
               <img
-                src={img.src}
+                src={toPublicUrl(img.src)}
                 alt={img.alt}
                 loading="lazy"
                 decoding="async"

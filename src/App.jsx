@@ -8,13 +8,9 @@ import PromoModal from './components/PromoModal/PromoModal';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import { I18nProvider, useI18n } from './i18n/I18nProvider';
 
-const publicUrl = process.env.PUBLIC_URL || '';
-let routerBasename = publicUrl;
-try {
-  routerBasename = new URL(publicUrl).pathname;
-} catch {
-  // publicUrl is already a pathname like "/repo" or empty.
-}
+const baseUrl = import.meta.env.BASE_URL || '/';
+const routerBasename =
+  import.meta.env.VITEST || baseUrl === '/' ? '' : baseUrl.replace(/\/$/, '');
 
 function App() {
   return (

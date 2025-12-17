@@ -8,8 +8,7 @@ import { usePageMeta } from '../hooks/usePageMeta';
 import { useI18n } from '../i18n/I18nProvider';
 import styles from './ContactPage.module.css';
 
-const FORMSPREE_ENDPOINT =
-  process.env.REACT_APP_FORMSPREE_ENDPOINT || 'https://formspree.io/f/yourFormId';
+const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || 'https://formspree.io/f/yourFormId';
 
 export default function ContactPage() {
   const { lang, t } = useI18n();

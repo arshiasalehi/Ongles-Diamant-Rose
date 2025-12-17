@@ -11,6 +11,7 @@ import reviewsFr from '../data/reviews.fr.json';
 import { getFeaturedNails } from '../data/featuredNails';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { useI18n } from '../i18n/I18nProvider';
+import { toPublicUrl } from '../utils/publicUrl';
 import styles from './HomePage.module.css';
 
 export default function HomePage() {
@@ -94,7 +95,7 @@ export default function HomePage() {
           <Reveal delayMs={140}>
             <div className={styles.studioFrame}>
               <img
-                src="/images/studio/studio.svg"
+                src={toPublicUrl('/images/studio/studio.svg')}
                 alt={t('home.studioImageAlt')}
                 className={styles.studioImage}
                 loading="lazy"
