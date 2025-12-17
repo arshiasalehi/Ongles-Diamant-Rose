@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import Reveal from '../ui/Reveal';
+import { useI18n } from '../../i18n/I18nProvider';
 import styles from './GalleryGrid.module.css';
 
 const DEFAULT_CATEGORIES = [
@@ -31,13 +32,24 @@ function fileNameFromSrc(src) {
 }
 
 export default function GalleryGrid({ images, categories = DEFAULT_CATEGORIES, initialCount = 25, step = 25 }) {
+  const { t } = useI18n();
   const [activeCategory, setActiveCategory] = useState('All');
   const [visibleCount, setVisibleCount] = useState(initialCount);
-  const [columns, setColumns] = useState(2);
+  const [columns, setColumns] = useState(() => (typeof window !== 'undefined' && window.innerWidth >= 720 ? 3 : 2));
   const [selected, setSelected] = useState(null);
   const closeRef = useRef(null);
 
   const items = useMemo(() => (Array.isArray(images) ? images : []), [images]);
+  const safeCategories = useMemo(() => {
+    const arr = Array.isArray(categories) ? categories : DEFAULT_CATEGORIES;
+    return arr
+      .map((c) => {
+        if (typeof c === 'string') return { key: c, label: c };
+        if (c && typeof c === 'object') return { key: c.key, label: c.label ?? c.key };
+        return null;
+      })
+      .filter((c) => c && c.key);
+  }, [categories]);
 
   useEffect(() => {
     const update = () => {
@@ -72,7 +84,7 @@ export default function GalleryGrid({ images, categories = DEFAULT_CATEGORIES, i
 
   const filtered = useMemo(() => {
     if (activeCategory === 'All') return items;
-    const wanted = activeCategory.toLowerCase();
+    const wanted = String(activeCategory).toLowerCase();
     return items.filter((img) =>
       Array.isArray(img.categories)
         ? img.categories.some((c) => String(c).toLowerCase() === wanted)
@@ -89,23 +101,28 @@ export default function GalleryGrid({ images, categories = DEFAULT_CATEGORIES, i
   };
 
   const lightbox = selected ? (
-    <div className={styles.lightboxLayer} role="dialog" aria-modal="true" aria-label="Image preview">
+    <div
+      className={styles.lightboxLayer}
+      role="dialog"
+      aria-modal="true"
+      aria-label={t('gallery.imagePreview')}
+    >
       <button
         type="button"
         className={styles.lightboxBackdrop}
-        aria-label="Close image preview"
+        aria-label={t('gallery.closePreview')}
         onClick={() => setSelected(null)}
       />
       <div className={styles.lightboxModal}>
         <div className={styles.lightboxTop}>
-          <div className={styles.lightboxTitle}>{selected.alt || 'Gallery image'}</div>
+          <div className={styles.lightboxTitle}>{selected.alt || t('gallery.imageFallback')}</div>
           <button
             ref={closeRef}
             type="button"
             className={styles.lightboxClose}
             onClick={() => setSelected(null)}
           >
-            Close
+            {t('common.close')}
           </button>
         </div>
         <div className={styles.lightboxImageWrap}>
@@ -123,7 +140,7 @@ export default function GalleryGrid({ images, categories = DEFAULT_CATEGORIES, i
             href={selected.src}
             download={fileNameFromSrc(selected.src)}
           >
-            Download
+            {t('gallery.download')}
           </a>
         </div>
       </div>
@@ -132,7 +149,7 @@ export default function GalleryGrid({ images, categories = DEFAULT_CATEGORIES, i
 
   return (
     <div className={styles.wrap}>
-      <div className={styles.filters} role="tablist" aria-label="Gallery filters">
+      <div className={styles.filters} role="tablist" aria-label={t('gallery.filtersLabel')}>
         <button
           type="button"
           role="tab"
@@ -140,64 +157,75 @@ export default function GalleryGrid({ images, categories = DEFAULT_CATEGORIES, i
           className={[styles.filter, activeCategory === 'All' ? styles.active : ''].join(' ')}
           onClick={() => onPick('All')}
         >
-          All
+          {t('gallery.all')}
         </button>
-        {categories.map((c) => (
+        {safeCategories.map((c) => (
           <button
-            key={c}
+            key={c.key}
             type="button"
             role="tab"
-            aria-selected={activeCategory === c}
-            className={[styles.filter, activeCategory === c ? styles.active : ''].join(' ')}
-            onClick={() => onPick(c)}
+            aria-selected={activeCategory === c.key}
+            className={[styles.filter, activeCategory === c.key ? styles.active : ''].join(' ')}
+            onClick={() => onPick(c.key)}
           >
-            {c}
+            {c.label}
           </button>
         ))}
       </div>
 
-      <div className={styles.grid} aria-label="Image gallery">
+      <div className={styles.grid} aria-label={t('gallery.gridLabel')}>
         {visible.map((img, idx) => {
           const variant = idx % 9;
           const col = columns > 0 ? idx % columns : 0;
           const row = columns > 0 ? Math.floor(idx / columns) : 0;
-          const delayMs = row * 110 + col * 20;
-          return (
-            <Reveal
-              as="figure"
-              key={img.id}
-              delayMs={delayMs}
-              className={[styles.card, styles[`v${variant}`]].filter(Boolean).join(' ')}
+          const delayMs = Math.max(0, row - 1) * 110 + col * 20;
+
+          const cardInner = (
+            <button
+              type="button"
+              className={styles.cardButton}
+              onClick={() => setSelected(img)}
+              aria-label={`${t('gallery.openImage')}: ${img.alt || t('gallery.imageFallback')}`}
             >
-              <button
-                type="button"
-                className={styles.cardButton}
-                onClick={() => setSelected(img)}
-                aria-label={`Open image: ${img.alt || 'Gallery image'}`}
+              <img
+                src={img.src}
+                alt={img.alt}
+                loading="lazy"
+                decoding="async"
+                className={styles.image}
+              />
+            </button>
+          );
+
+          return (
+            row === 0 ? (
+              <figure key={img.id} className={[styles.card, styles[`v${variant}`]].filter(Boolean).join(' ')}>
+                {cardInner}
+              </figure>
+            ) : (
+              <Reveal
+                as="figure"
+                key={img.id}
+                delayMs={delayMs}
+                className={[styles.card, styles[`v${variant}`]].filter(Boolean).join(' ')}
               >
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  loading="lazy"
-                  decoding="async"
-                  className={styles.image}
-                />
-              </button>
-            </Reveal>
+                {cardInner}
+              </Reveal>
+            )
           );
         })}
       </div>
 
       {filtered.length === 0 ? (
         <div className={styles.empty} role="status">
-          No images found for this filter.
+          {t('gallery.noImages')}
         </div>
       ) : null}
 
       {canLoadMore ? (
         <div className={styles.loadMore}>
           <button type="button" className={styles.loadButton} onClick={() => setVisibleCount((c) => c + step)}>
-            Load More
+            {t('gallery.loadMore')}
           </button>
         </div>
       ) : null}

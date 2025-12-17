@@ -1,0 +1,31 @@
+[
+  {
+    "id": 1,
+    "name": "Sophie L.",
+    "rating": 5,
+    "text": "Amazing service, clean and relaxing atmosphere. My nails were perfect and lasted a long time.",
+    "date": "2024-05-14"
+  },
+  {
+    "id": 2,
+    "name": "Maya R.",
+    "rating": 5,
+    "text": "Warm welcome and an impeccable result. I love the attention to detail — 100% recommended.",
+    "date": "2024-03-22"
+  },
+  {
+    "id": 3,
+    "name": "Camille B.",
+    "rating": 5,
+    "text": "A true luxury experience. The specialists are attentive, fast, and very professional.",
+    "date": "2024-01-09"
+  },
+  {
+    "id": 4,
+    "name": "Nina D.",
+    "rating": 5,
+    "text": "I’ve tried many salons in Montréal, and this one is my favorite. Clean work and beautiful colors.",
+    "date": "2024-06-02"
+  }
+]
+

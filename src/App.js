@@ -6,6 +6,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import PromoModal from './components/PromoModal/PromoModal';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
+import { I18nProvider, useI18n } from './i18n/I18nProvider';
 
 const publicUrl = process.env.PUBLIC_URL || '';
 let routerBasename = publicUrl;
@@ -17,9 +18,11 @@ try {
 
 function App() {
   return (
-    <BrowserRouter basename={routerBasename}>
-      <AppShell />
-    </BrowserRouter>
+    <I18nProvider>
+      <BrowserRouter basename={routerBasename}>
+        <AppShell />
+      </BrowserRouter>
+    </I18nProvider>
   );
 }
 
@@ -34,6 +37,7 @@ const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 function AppShell() {
   const location = useLocation();
+  const { t } = useI18n();
 
   return (
     <>
@@ -45,7 +49,7 @@ function AppShell() {
           <Suspense
             fallback={
               <div className="App-loading" role="status" aria-live="polite">
-                Loading…
+                {t('common.loading')}
               </div>
             }
           >

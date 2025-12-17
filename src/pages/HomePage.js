@@ -6,16 +6,21 @@ import Marquee from '../components/Marquee/Marquee';
 import ReviewCarousel from '../components/ReviewCarousel/ReviewCarousel';
 import { CalendarIcon, ShieldCheckIcon } from '../components/ui/icons';
 import { BOOKING_URL } from '../constants';
-import reviews from '../data/reviews.json';
-import { featuredNails } from '../data/featuredNails';
+import reviewsEn from '../data/reviews.en.json';
+import reviewsFr from '../data/reviews.fr.json';
+import { getFeaturedNails } from '../data/featuredNails';
 import { usePageMeta } from '../hooks/usePageMeta';
+import { useI18n } from '../i18n/I18nProvider';
 import styles from './HomePage.module.css';
 
 export default function HomePage() {
+  const { lang, t } = useI18n();
+  const reviews = lang === 'fr' ? reviewsFr : reviewsEn;
+  const featuredNails = getFeaturedNails(lang);
+
   usePageMeta({
-    title: 'Home',
-    description:
-      'Ongles Diamant Rose à Montréal — services de manucure & pédicure, galerie de designs et réservation en ligne.'
+    title: t('home.metaTitle'),
+    description: t('home.metaDescription')
   });
 
   return (
@@ -24,39 +29,37 @@ export default function HomePage() {
         <Container className={styles.heroInner}>
           <div className={styles.heroLeft}>
             <Reveal delayMs={40}>
-              <p className={styles.kicker}>Montréal • Nails Studio</p>
+              <p className={styles.kicker}>{t('home.kicker')}</p>
             </Reveal>
             <Reveal delayMs={90}>
-              <h1 className={styles.h1}>Best Nails for Best Moments</h1>
+              <h1 className={styles.h1}>{t('home.headline')}</h1>
             </Reveal>
             <Reveal delayMs={130}>
               <div className={styles.divider} aria-hidden="true" />
             </Reveal>
             <Reveal delayMs={170}>
-              <p className={styles.subtext}>
-                Book online in seconds and let our licensed specialists handle the details.
-              </p>
+              <p className={styles.subtext}>{t('home.subtext')}</p>
             </Reveal>
             <Reveal delayMs={210}>
               <div className={styles.heroCtas}>
                 <ButtonLink href={BOOKING_URL} target="_blank" rel="noreferrer" variant="primary">
-                  Book Now
+                  {t('common.bookNow')}
                 </ButtonLink>
                 <ButtonLink to="/services" variant="secondary">
-                  View All Services
+                  {t('home.viewAllServices')}
                 </ButtonLink>
               </div>
             </Reveal>
 
             <Reveal delayMs={260}>
-              <div className={styles.advantages} aria-label="Our advantages">
+              <div className={styles.advantages} aria-label={t('home.advantagesLabel')}>
                 <div className={styles.advCard}>
                   <span className={styles.advIcon} aria-hidden="true">
                     <CalendarIcon />
                   </span>
                   <div className={styles.advText}>
-                    <div className={styles.advTitle}>Online Booking</div>
-                    <div className={styles.advBody}>Fast, simple, and always available.</div>
+                    <div className={styles.advTitle}>{t('home.advantages.onlineBookingTitle')}</div>
+                    <div className={styles.advBody}>{t('home.advantages.onlineBookingBody')}</div>
                   </div>
                 </div>
                 <div className={styles.advCard}>
@@ -64,8 +67,8 @@ export default function HomePage() {
                     <ShieldCheckIcon />
                   </span>
                   <div className={styles.advText}>
-                    <div className={styles.advTitle}>Licensed Specialists</div>
-                    <div className={styles.advBody}>Professional care with a clean finish.</div>
+                    <div className={styles.advTitle}>{t('home.advantages.licensedTitle')}</div>
+                    <div className={styles.advBody}>{t('home.advantages.licensedBody')}</div>
                   </div>
                 </div>
               </div>
@@ -78,23 +81,21 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <Marquee text="5+ Years of Experience" />
+      <Marquee text={t('home.marquee')} />
 
       <section className={styles.studio}>
         <Container>
           <Reveal>
-            <h2 className={styles.h2}>Imagine Yourself In Our Studio</h2>
+            <h2 className={styles.h2}>{t('home.studioTitle')}</h2>
           </Reveal>
           <Reveal delayMs={90}>
-            <p className={styles.sectionLead}>
-              A calm, clean space designed for comfort — with modern techniques
-            </p>
+            <p className={styles.sectionLead}>{t('home.studioLead')}</p>
           </Reveal>
           <Reveal delayMs={140}>
             <div className={styles.studioFrame}>
               <img
                 src="/images/studio/studio.svg"
-                alt="Salon studio interior"
+                alt={t('home.studioImageAlt')}
                 className={styles.studioImage}
                 loading="lazy"
                 decoding="async"
@@ -107,7 +108,7 @@ export default function HomePage() {
       <section className={styles.reviews}>
         <Container>
           <Reveal>
-            <h2 className={styles.h2}>Hear What Our Customers Have To Say</h2>
+            <h2 className={styles.h2}>{t('home.reviewsTitle')}</h2>
           </Reveal>
           <Reveal delayMs={120}>
             <ReviewCarousel reviews={reviews} />

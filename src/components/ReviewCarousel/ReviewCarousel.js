@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { formatDate } from '../../utils/formatDate';
+import { useI18n } from '../../i18n/I18nProvider';
 import styles from './ReviewCarousel.module.css';
 
 function Star({ filled }) {
@@ -17,6 +18,7 @@ function Star({ filled }) {
 }
 
 export default function ReviewCarousel({ reviews, intervalMs = 6000 }) {
+  const { lang, t } = useI18n();
   const items = useMemo(() => (Array.isArray(reviews) ? reviews : []), [reviews]);
   const [index, setIndex] = useState(0);
 
@@ -33,19 +35,22 @@ export default function ReviewCarousel({ reviews, intervalMs = 6000 }) {
   const prev = () => setIndex((i) => (i - 1 + items.length) % items.length);
 
   return (
-    <section className={styles.section} aria-label="Customer reviews">
+    <section className={styles.section} aria-label={t('carousel.reviewsLabel')}>
       <div className={styles.card}>
         <div className={styles.top}>
-          <div className={styles.stars} aria-label={`${current.rating} out of 5`}>
+          <div
+            className={styles.stars}
+            aria-label={lang === 'fr' ? `${current.rating} sur 5` : `${current.rating} out of 5`}
+          >
             {Array.from({ length: 5 }).map((_, i) => (
               <Star key={i} filled={i < (current.rating || 0)} />
             ))}
           </div>
           <div className={styles.controls}>
-            <button className={styles.controlButton} type="button" onClick={prev} aria-label="Previous">
+            <button className={styles.controlButton} type="button" onClick={prev} aria-label={t('carousel.previous')}>
               ‹
             </button>
-            <button className={styles.controlButton} type="button" onClick={next} aria-label="Next">
+            <button className={styles.controlButton} type="button" onClick={next} aria-label={t('carousel.next')}>
               ›
             </button>
           </div>

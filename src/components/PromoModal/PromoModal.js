@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import ButtonLink from '../ui/ButtonLink';
 import { BOOKING_URL } from '../../constants';
+import { useI18n } from '../../i18n/I18nProvider';
 import styles from './PromoModal.module.css';
 
 const STORAGE_KEY = 'odr_promo_dismissed_at';
@@ -19,6 +20,7 @@ function shouldShowNow(now = Date.now()) {
 }
 
 export default function PromoModal() {
+  const { t } = useI18n();
   const [open, setOpen] = useState(false);
   const closeRef = useRef(null);
 
@@ -62,25 +64,22 @@ export default function PromoModal() {
   if (!open) return null;
 
   return (
-    <div className={styles.layer} role="dialog" aria-modal="true" aria-label="Promotion">
-      <button className={styles.backdrop} type="button" aria-label="Close promotion" onClick={dismiss} />
+    <div className={styles.layer} role="dialog" aria-modal="true" aria-label={t('promo.label')}>
+      <button className={styles.backdrop} type="button" aria-label={t('common.close')} onClick={dismiss} />
       <div className={styles.modal}>
-        <div className={styles.badge}>Limited-time</div>
-        <h2 className={styles.title}>A little sparkle, on us.</h2>
-        <p className={styles.text}>
-          Book today and ask about our seasonal promotion. We’ll help you find the perfect shape, color, and finish.
-        </p>
+        <div className={styles.badge}>{t('promo.badge')}</div>
+        <h2 className={styles.title}>{t('promo.title')}</h2>
+        <p className={styles.text}>{t('promo.text')}</p>
         <div className={styles.actions}>
           <ButtonLink href={BOOKING_URL} target="_blank" rel="noreferrer" variant="primary">
-            Book Now
+            {t('common.bookNow')}
           </ButtonLink>
           <button ref={closeRef} type="button" className={styles.close} onClick={dismiss}>
-            Close
+            {t('common.close')}
           </button>
         </div>
-        <p className={styles.note}>This message won’t show again for 24 hours.</p>
+        <p className={styles.note}>{t('promo.note')}</p>
       </div>
     </div>
   );
 }
-

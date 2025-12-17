@@ -1,9 +1,11 @@
 import { useId, useMemo, useState } from 'react';
 import ButtonLink from '../ui/ButtonLink';
 import { BOOKING_URL } from '../../constants';
+import { useI18n } from '../../i18n/I18nProvider';
 import styles from './ServicesAccordion.module.css';
 
 export default function ServicesAccordion({ services, supportingImageSrc, supportingImageAlt }) {
+  const { t } = useI18n();
   const items = useMemo(() => (Array.isArray(services) ? services : []), [services]);
   const [openId, setOpenId] = useState(items[0]?.id ?? null);
   const groupId = useId();
@@ -11,7 +13,7 @@ export default function ServicesAccordion({ services, supportingImageSrc, suppor
   return (
     <div className={styles.layout}>
       <div className={styles.left}>
-        <div className={styles.accordion} role="region" aria-label="Services list">
+        <div className={styles.accordion} role="region" aria-label={t('services.ourServices')}>
           {items.map((service) => {
             const isOpen = service.id === openId;
             const panelId = `${groupId}-panel-${service.id}`;
@@ -48,7 +50,7 @@ export default function ServicesAccordion({ services, supportingImageSrc, suppor
                     <div className={styles.details}>
                       {service.duration ? (
                         <div className={styles.detailRow}>
-                          <span className={styles.detailLabel}>Duration</span>
+                          <span className={styles.detailLabel}>{t('services.duration')}</span>
                           <span className={styles.detailValue}>{service.duration}</span>
                         </div>
                       ) : null}
@@ -62,7 +64,7 @@ export default function ServicesAccordion({ services, supportingImageSrc, suppor
                         variant="primary"
                         size="sm"
                       >
-                        Book Now
+                        {t('common.bookNow')}
                       </ButtonLink>
                     </div>
                   </div>
@@ -73,7 +75,7 @@ export default function ServicesAccordion({ services, supportingImageSrc, suppor
         </div>
       </div>
 
-      <div className={styles.right} aria-label="Supporting image">
+      <div className={styles.right} aria-label={t('a11y.supportingImage')}>
         <div className={styles.imageFrame}>
           <img
             src={supportingImageSrc}
@@ -87,4 +89,3 @@ export default function ServicesAccordion({ services, supportingImageSrc, suppor
     </div>
   );
 }
-
