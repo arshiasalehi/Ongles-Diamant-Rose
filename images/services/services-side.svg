@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1100" viewBox="0 0 900 1100" role="img" aria-label="Supporting services image placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff3f7"/>
+      <stop offset="0.6" stop-color="#f7cfe0"/>
+      <stop offset="1" stop-color="#eab9cf"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="60%" cy="35%" r="60%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="900" height="1100" fill="url(#bg)"/>
+  <circle cx="560" cy="360" r="320" fill="url(#glow)"/>
+  <text x="70" y="140" font-family="ui-sans-serif, system-ui, -apple-system" font-size="34" fill="#6d2b44" fill-opacity="0.8">
+    Book online anytime
+  </text>
+  <text x="70" y="190" font-family="ui-sans-serif, system-ui, -apple-system" font-size="18" fill="#6d2b44" fill-opacity="0.65">
+    Placeholder image — replace with real salon photography.
+  </text>
+</svg>
+

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-label="Services intro placeholder image">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffeaf3"/>
+      <stop offset="0.55" stop-color="#f8cfe0"/>
+      <stop offset="1" stop-color="#efb8d3"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="900" fill="url(#bg)"/>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="10">
+    <path d="M200 580 C 420 420, 650 730, 910 540 S 1230 600, 1230 600" />
+    <path d="M170 680 C 420 520, 650 820, 960 620 S 1260 700, 1260 700" />
+  </g>
+  <text x="90" y="140" font-family="ui-sans-serif, system-ui, -apple-system" font-size="54" fill="#6d2b44" fill-opacity="0.85">
+    Services
+  </text>
+  <text x="90" y="200" font-family="ui-sans-serif, system-ui, -apple-system" font-size="22" fill="#6d2b44" fill-opacity="0.65">
+    Placeholder image — replace with real salon photography.
+  </text>
+</svg>
+

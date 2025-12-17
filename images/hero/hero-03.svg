@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-label="Chrome nail finish placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7ecff"/>
+      <stop offset="0.55" stop-color="#e8d7ff"/>
+      <stop offset="1" stop-color="#d8c6ff"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="70%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1400" height="900" fill="url(#bg)"/>
+  <circle cx="720" cy="340" r="430" fill="url(#glow)"/>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="10">
+    <path d="M220 610 C 440 420, 610 740, 880 520 S 1180 610, 1180 610" />
+    <path d="M180 710 C 430 520, 650 830, 920 610 S 1220 710, 1220 710" />
+  </g>
+  <g>
+    <text x="80" y="140" font-family="ui-sans-serif, system-ui, -apple-system" font-size="54" fill="#3c2750" fill-opacity="0.85">
+      Chrome Glow
+    </text>
+    <text x="80" y="200" font-family="ui-sans-serif, system-ui, -apple-system" font-size="22" fill="#3c2750" fill-opacity="0.65">
+      Placeholder image — replace with real salon photography.
+    </text>
+  </g>
+</svg>
+

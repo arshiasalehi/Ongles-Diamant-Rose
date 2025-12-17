@@ -1,0 +1,1 @@
+function a(s){const t=String(s||"");if(!t||/^https?:\/\//i.test(t))return t;const n="/Ongles-Diamant-Rose/",e=n.endsWith("/")?n:`${n}/`,r=t.startsWith("/")?t.slice(1):t;return`${e}${r}`}export{a as t};

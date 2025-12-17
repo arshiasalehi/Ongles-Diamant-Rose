@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="Salon studio interior placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff7fb"/>
+      <stop offset="0.5" stop-color="#fde7f1"/>
+      <stop offset="1" stop-color="#f3cfe0"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.35"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <g opacity="0.22" fill="#7a2b4c">
+    <rect x="120" y="210" width="360" height="480" rx="28"/>
+    <rect x="520" y="170" width="360" height="520" rx="28"/>
+    <rect x="920" y="230" width="560" height="460" rx="28"/>
+  </g>
+  <rect x="120" y="690" width="1360" height="70" rx="20" fill="url(#panel)"/>
+  <text x="140" y="745" font-family="ui-sans-serif, system-ui, -apple-system" font-size="24" fill="#5a2a36" fill-opacity="0.75">
+    Placeholder studio image — replace with real photography of your salon.
+  </text>
+</svg>
+
