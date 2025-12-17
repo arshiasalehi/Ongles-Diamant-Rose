@@ -1,0 +1,83 @@
+.section {
+  margin-top: 1.25rem;
+}
+
+.card {
+  border-radius: 22px;
+  background: var(--surface);
+  border: 1px solid rgba(214, 177, 191, 0.55);
+  backdrop-filter: blur(10px);
+  padding: clamp(1.2rem, 2.4vw, 1.8rem);
+  box-shadow: 0 26px 70px rgba(26, 20, 35, 0.12);
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+}
+
+.stars {
+  color: var(--rose-600);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.controls {
+  display: inline-flex;
+  gap: 0.4rem;
+}
+
+.controlButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(212, 163, 115, 0.26);
+  background: var(--surface);
+  color: var(--ink-900);
+  font-size: 1.25rem;
+  line-height: 1;
+  transition: transform 160ms ease, background-color 160ms ease;
+}
+
+.controlButton:hover {
+  transform: translateY(-1px);
+  background: var(--surface-strong);
+}
+
+.controlButton:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(212, 163, 115, 0.24);
+}
+
+.quote {
+  margin: 0;
+}
+
+.text {
+  margin: 0;
+  color: var(--ink-900);
+  font-weight: 620;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.footer {
+  margin-top: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--ink-700);
+  font-weight: 600;
+}
+
+.name {
+  color: var(--ink-900);
+}
+
+.date {
+  opacity: 0.9;
+}

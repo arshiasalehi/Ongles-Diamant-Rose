@@ -1,0 +1,64 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border-radius: 999px;
+  padding: 0.85rem 1.1rem;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease,
+    box-shadow 180ms ease, color 180ms ease;
+  user-select: none;
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(212, 163, 115, 0.24);
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.md {
+  font-size: 0.95rem;
+}
+
+.sm {
+  font-size: 0.9rem;
+  padding: 0.7rem 0.95rem;
+}
+
+.primary {
+  background: var(--ink-900);
+  color: #fff;
+  box-shadow: 0 16px 38px rgba(27, 26, 20, 0.22);
+}
+
+.primary:hover {
+  box-shadow: 0 20px 48px rgba(27, 26, 20, 0.26);
+}
+
+.secondary {
+  background: var(--surface);
+  border-color: rgba(254, 250, 224, 0.55);
+  color: var(--ink-900);
+  backdrop-filter: blur(10px);
+}
+
+.secondary:hover {
+  border-color: rgba(27, 26, 20, 0.30);
+}
+
+.ghost {
+  background: transparent;
+  border-color: rgba(212, 163, 115, 0.30);
+  color: var(--rose-700);
+}
+
+.ghost:hover {
+  border-color: rgba(212, 163, 115, 0.55);
+}

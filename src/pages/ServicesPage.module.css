@@ -1,0 +1,111 @@
+.page {
+  padding: 2.25rem 0 3.5rem;
+}
+
+.intro {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.introTop {
+  display: grid;
+  place-items: center;
+}
+
+.introImage {
+  width: 100%;
+  max-width: 980px;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 28px;
+  border: 1px solid rgba(214, 177, 191, 0.55);
+  box-shadow: 0 26px 70px rgba(26, 20, 35, 0.12);
+  background: var(--surface-soft);
+}
+
+.introContent {
+  display: grid;
+  gap: 0.75rem;
+  padding-top: 0.25rem;
+}
+
+.h1 {
+  margin: 0;
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  letter-spacing: -0.03em;
+  color: var(--ink-900);
+  font-family: var(--font-serif);
+  font-weight: 600;
+}
+
+.lead {
+  margin: 0;
+  color: var(--ink-800);
+  font-weight: 500;
+  line-height: 1.75;
+  max-width: 70ch;
+}
+
+.highlights {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.55rem;
+}
+
+.highlight {
+  border-radius: 18px;
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(214, 177, 191, 0.55);
+  background: var(--surface);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.highlightValue {
+  font-weight: 900;
+  font-size: 1.2rem;
+  color: var(--rose-700);
+}
+
+.highlightLabel {
+  font-weight: 700;
+  color: var(--ink-800);
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.4rem;
+}
+
+.list {
+  margin-top: 2.3rem;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.h2 {
+  margin: 0;
+  font-size: 1.6rem;
+  color: var(--ink-900);
+  letter-spacing: -0.02em;
+}
+
+.note {
+  margin: 0;
+  color: var(--ink-700);
+  font-weight: 600;
+  line-height: 1.7;
+  max-width: 70ch;
+}
+
+@media (min-width: 900px) {
+  .highlights {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

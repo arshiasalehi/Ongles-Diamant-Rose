@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900" role="img" aria-label="Gallery nail placeholder 12">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7ecff"/>
+      <stop offset="1" stop-color="#d3b3ff"/>
+    </linearGradient>
+    <radialGradient id="sparkle" cx="60%" cy="30%" r="70%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.92"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="900" height="900" fill="url(#bg)"/>
+  <circle cx="560" cy="270" r="370" fill="url(#sparkle)"/>
+  <path d="M150 655c160-130 250-140 330 0s170 130 330 0" fill="none" stroke="#fff" stroke-opacity="0.42" stroke-width="16" stroke-linecap="round"/>
+</svg>
+

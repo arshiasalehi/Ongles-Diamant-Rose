@@ -1,0 +1,258 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(254, 250, 224, 0.72);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(214, 177, 191, 0.35);
+  transition: box-shadow 200ms ease, background-color 200ms ease;
+}
+
+.scrolled {
+  box-shadow: 0 12px 30px rgba(26, 20, 35, 0.08);
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.skipLink {
+  position: absolute;
+  left: 0.75rem;
+  top: 0.5rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: 999px;
+  background: white;
+  color: var(--ink-900);
+  transform: translateY(-160%);
+  transition: transform 160ms ease;
+  z-index: 60;
+}
+
+.skipLink:focus {
+  transform: translateY(0);
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(212, 163, 115, 0.24);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 0.85rem;
+  gap: 1rem;
+}
+
+.brandLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  color: var(--ink-900);
+}
+
+.brandIcon {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(212, 163, 115, 0.18), rgba(212, 163, 115, 0.09));
+  border: 1px solid rgba(212, 163, 115, 0.22);
+  color: var(--rose-700);
+}
+
+.brandText {
+  display: grid;
+  line-height: 1.05;
+}
+
+.brandName {
+  font-weight: 760;
+  letter-spacing: 0.02em;
+}
+
+.brandAccent {
+  font-weight: 650;
+  color: var(--rose-700);
+}
+
+.navDesktop {
+  display: none;
+  gap: 1rem;
+  align-items: center;
+}
+
+.navLink {
+  position: relative;
+  text-decoration: none;
+  color: var(--ink-800);
+  font-weight: 600;
+  padding: 0.45rem 0.4rem;
+  border-radius: 10px;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.navLink:hover {
+  background: rgba(212, 163, 115, 0.10);
+  color: var(--ink-900);
+}
+
+.active {
+  color: var(--rose-700);
+  background: rgba(212, 163, 115, 0.14);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.bookDesktop {
+  display: none;
+}
+
+.hamburger {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid rgba(212, 163, 115, 0.22);
+  color: var(--ink-900);
+}
+
+.hamburger:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(212, 163, 115, 0.24);
+}
+
+.hamburgerLines {
+  display: grid;
+  gap: 5px;
+}
+
+.hamburgerLines span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 999px;
+  transition: transform 200ms ease, opacity 200ms ease;
+}
+
+.hamburgerLines[data-open='true'] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburgerLines[data-open='true'] span:nth-child(2) {
+  opacity: 0;
+}
+.hamburgerLines[data-open='true'] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobileLayer {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  display: block;
+}
+
+.open {
+  pointer-events: auto;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 10, 18, 0.35);
+  opacity: 0;
+  transition: opacity 220ms ease;
+  border: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.open .backdrop {
+  opacity: 1;
+}
+
+.drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100dvh;
+  width: min(92vw, 380px);
+  background: rgba(255, 255, 255, 0.90);
+  backdrop-filter: blur(12px);
+  border-left: 1px solid rgba(214, 177, 191, 0.45);
+  transform: translateX(102%);
+  transition: transform 260ms ease;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.open .drawer {
+  transform: translateX(0);
+}
+
+.drawerHeader {
+  padding: 1rem 1.25rem 0.75rem;
+  border-bottom: 1px solid rgba(214, 177, 191, 0.35);
+}
+
+.drawerTitle {
+  font-weight: 760;
+  letter-spacing: 0.01em;
+}
+
+.navMobile {
+  display: grid;
+  padding: 0.6rem 0.75rem;
+  gap: 0.15rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobileLink {
+  text-decoration: none;
+  color: var(--ink-900);
+  font-weight: 650;
+  padding: 0.6rem 0.75rem;
+  border-radius: 12px;
+  transition: background-color 160ms ease;
+}
+
+.mobileLink:hover {
+  background: rgba(212, 163, 115, 0.10);
+}
+
+.activeMobile {
+  background: rgba(212, 163, 115, 0.16);
+  color: var(--rose-700);
+}
+
+.drawerFooter {
+  padding: 1rem 1.25rem 1.25rem;
+  border-top: 1px solid rgba(214, 177, 191, 0.35);
+  padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+}
+
+.bookMobile {
+  width: 100%;
+}
+
+@media (min-width: 900px) {
+  .navDesktop {
+    display: flex;
+  }
+  .bookDesktop {
+    display: inline-flex;
+  }
+  .hamburger {
+    display: none;
+  }
+  .mobileLayer {
+    display: none;
+  }
+}

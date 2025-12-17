@@ -1,0 +1,13 @@
+{
+  "city": "Montréal, QC",
+  "address": "6843 St-Hubert, Montréal",
+  "phoneDisplay": "514 543 3040",
+  "phoneE164": "+15145433040",
+  "email": "hello@onglesdiamantrose.ca",
+  "instagramUrl": "https://www.instagram.com/ongles_diamant_rose/",
+  "workingHours": [
+    { "label": "Lundi à mercredi", "value": "10h à 18h" },
+    { "label": "Jeudi & vendredi", "value": "10h à 20h" },
+    { "label": "Samedi", "value": "10h à 17h" }
+  ]
+}

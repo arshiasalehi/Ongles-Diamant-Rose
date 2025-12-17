@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-label="Luxury pink nail close-up placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fde2ea"/>
+      <stop offset="0.55" stop-color="#f6c3d3"/>
+      <stop offset="1" stop-color="#e8a9bf"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="35%" cy="35%" r="60%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1400" height="900" fill="url(#bg)"/>
+  <circle cx="480" cy="290" r="380" fill="url(#glow)"/>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="10">
+    <path d="M220 610 C 430 420, 620 720, 850 520 S 1220 600, 1220 600" />
+    <path d="M180 690 C 420 520, 650 820, 910 610 S 1250 690, 1250 690" />
+  </g>
+  <g>
+    <text x="80" y="140" font-family="ui-sans-serif, system-ui, -apple-system" font-size="54" fill="#6d2b44" fill-opacity="0.85">
+      Ongles Diamant Rose
+    </text>
+    <text x="80" y="200" font-family="ui-sans-serif, system-ui, -apple-system" font-size="22" fill="#6d2b44" fill-opacity="0.65">
+      Placeholder image — replace with real salon photography.
+    </text>
+  </g>
+</svg>
+

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="Map background placeholder with a pin">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f2f6ff"/>
+      <stop offset="0.5" stop-color="#f9fbff"/>
+      <stop offset="1" stop-color="#ffeef6"/>
+    </linearGradient>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0V64" fill="none" stroke="#1f2a44" stroke-opacity="0.06" stroke-width="2"/>
+    </pattern>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+  <g opacity="0.16" fill="#7a2b4c">
+    <path d="M150 260c230-80 360-80 560 0s330 80 590 0v110c-230 90-360 90-560 0s-330-90-590 0z"/>
+    <path d="M140 520c250-70 380-70 590 0s340 70 620 0v120c-240 90-370 90-590 0s-350-90-620 0z"/>
+  </g>
+  <g transform="translate(1120 360)" filter="url(#shadow)">
+    <path d="M80 0c44 0 80 36 80 80 0 62-80 170-80 170S0 142 0 80C0 36 36 0 80 0z" fill="#D4A373"/>
+    <circle cx="80" cy="80" r="30" fill="#fff"/>
+  </g>
+  <text x="70" y="120" font-family="ui-sans-serif, system-ui, -apple-system" font-size="26" fill="#1f2a44" fill-opacity="0.6">
+    Map placeholder — replace with an embedded map or static map image.
+  </text>
+</svg>

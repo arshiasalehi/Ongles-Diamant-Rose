@@ -1,0 +1,150 @@
+.layout {
+  display: grid;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.accordion {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.item {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(214, 177, 191, 0.55);
+  background: var(--surface);
+  backdrop-filter: blur(10px);
+}
+
+.trigger {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  text-align: left;
+  padding: 1rem 1.05rem;
+  cursor: pointer;
+}
+
+.trigger:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(212, 163, 115, 0.24);
+}
+
+.titleWrap {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.title {
+  font-weight: 780;
+  color: var(--ink-900);
+}
+
+.subtitle {
+  color: var(--ink-700);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  white-space: nowrap;
+}
+
+.price {
+  color: var(--rose-700);
+  font-weight: 760;
+}
+
+.chev {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(212, 163, 115, 0.26);
+  color: var(--ink-900);
+}
+
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 220ms ease;
+}
+
+.panel[data-open='true'] {
+  grid-template-rows: 1fr;
+}
+
+.panelInner {
+  overflow: hidden;
+  padding: 0 1.05rem 1.1rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.details {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--ink-700);
+  font-weight: 650;
+}
+
+.detailLabel {
+  color: var(--ink-600);
+}
+
+.description {
+  margin: 0;
+  color: var(--ink-800);
+  line-height: 1.65;
+  font-weight: 600;
+}
+
+.cta {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.imageFrame {
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(214, 177, 191, 0.55);
+  background: var(--surface-soft);
+  box-shadow: 0 26px 70px rgba(26, 20, 35, 0.14);
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (min-width: 980px) {
+  .layout {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 1.75rem;
+  }
+  .right {
+    position: sticky;
+    top: 96px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel {
+    transition: none;
+  }
+}

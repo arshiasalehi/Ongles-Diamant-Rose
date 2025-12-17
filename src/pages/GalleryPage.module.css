@@ -1,0 +1,24 @@
+.page {
+  padding: 2.25rem 0 3.75rem;
+}
+
+.header {
+  margin-bottom: 1.1rem;
+}
+
+.h1 {
+  margin: 0;
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  letter-spacing: -0.03em;
+  color: var(--ink-900);
+  font-family: var(--font-serif);
+  font-weight: 600;
+}
+
+.lead {
+  margin: 0.55rem 0 0;
+  max-width: 72ch;
+  color: var(--ink-700);
+  font-weight: 500;
+  line-height: 1.7;
+}

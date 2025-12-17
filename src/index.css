@@ -1,13 +1,69 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--ink-900);
+  background: radial-gradient(
+      circle at 18% 10%,
+      rgba(255, 255, 255, 0.96),
+      rgba(254, 250, 224, 0.88) 45%,
+      rgba(250, 237, 205, 0.70) 75%
+    ),
+    linear-gradient(180deg, #ffffff, var(--field-cornsilk));
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+:root {
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
+  --font-serif: 'Playfair Display', ui-serif, Georgia, 'Times New Roman', Times, serif;
+
+  --ink-900: #1b1a14;
+  --ink-800: #2a281f;
+  --ink-700: #3f3c2f;
+  --ink-600: #5b5646;
+
+  --field-sage: #ccd5ae; /* Dry Sage */
+  --field-beige: #e9edc9; /* Beige */
+  --field-cornsilk: #fefae0; /* Cornsilk */
+  --field-papaya: #faedcd; /* Papaya Whip */
+  --field-bronze: #d4a373; /* Light Bronze */
+
+  /* White + cream surfaces */
+  --surface-strong: rgba(255, 255, 255, 0.92);
+  --surface: rgba(254, 250, 224, 0.78);
+  --surface-soft: rgba(250, 237, 205, 0.62);
+
+  /* Backwards-compatible accent tokens used across components */
+  --rose-700: #b07b4a;
+  --rose-600: #d4a373;
+  --rose-500: #e0b588;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(212, 163, 115, 0.28);
 }

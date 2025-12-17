@@ -1,0 +1,31 @@
+[
+  {
+    "id": 1,
+    "name": "Sophie L.",
+    "rating": 5,
+    "text": "Super service, ambiance propre et relaxante. Mes ongles étaient parfaits et ont tenu longtemps.",
+    "date": "2024-05-14"
+  },
+  {
+    "id": 2,
+    "name": "Maya R.",
+    "rating": 5,
+    "text": "Accueil chaleureux et résultat impeccable. J’adore le souci du détail — je recommande à 100%.",
+    "date": "2024-03-22"
+  },
+  {
+    "id": 3,
+    "name": "Camille B.",
+    "rating": 5,
+    "text": "Une vraie expérience luxe. Les spécialistes sont attentifs, rapides et très professionnels.",
+    "date": "2024-01-09"
+  },
+  {
+    "id": 4,
+    "name": "Nina D.",
+    "rating": 5,
+    "text": "J’ai essayé plusieurs salons à Montréal, et celui-ci est mon préféré. Travail propre et couleurs magnifiques.",
+    "date": "2024-06-02"
+  }
+]
+

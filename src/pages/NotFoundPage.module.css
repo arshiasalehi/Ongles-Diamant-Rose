@@ -1,0 +1,23 @@
+.page {
+  padding: 4.25rem 0 4.5rem;
+}
+
+.inner {
+  display: grid;
+  place-items: start;
+  gap: 0.8rem;
+}
+
+.h1 {
+  margin: 0;
+  font-size: 4.25rem;
+  letter-spacing: -0.03em;
+  color: var(--ink-900);
+}
+
+.text {
+  margin: 0;
+  color: var(--ink-700);
+  font-weight: 650;
+}
+

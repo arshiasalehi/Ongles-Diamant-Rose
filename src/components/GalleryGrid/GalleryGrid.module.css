@@ -1,0 +1,142 @@
+.wrap {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.filters {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+  scroll-snap-type: x mandatory;
+}
+
+.filters::-webkit-scrollbar {
+  height: 10px;
+}
+
+.filters::-webkit-scrollbar-thumb {
+  background: rgba(212, 163, 115, 0.22);
+  border-radius: 999px;
+}
+
+.filter {
+  scroll-snap-align: start;
+  border-radius: 999px;
+  padding: 0.65rem 0.95rem;
+  border: 1px solid rgba(214, 177, 191, 0.55);
+  background: var(--surface);
+  backdrop-filter: blur(10px);
+  font-weight: 650;
+  color: var(--ink-800);
+  white-space: nowrap;
+  transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.filter:hover {
+  transform: translateY(-1px);
+  border-color: rgba(212, 163, 115, 0.55);
+}
+
+.filter:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(212, 163, 115, 0.24);
+}
+
+.active {
+  background: rgba(212, 163, 115, 0.16);
+  border-color: rgba(212, 163, 115, 0.60);
+  color: var(--rose-700);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem;
+  grid-auto-flow: dense;
+}
+
+.card {
+  margin: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(27, 26, 20, 0.10);
+  box-shadow: 0 18px 50px rgba(27, 26, 20, 0.08);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.v0,
+.v4,
+.v8 {
+  aspect-ratio: 4 / 5;
+}
+
+.v1,
+.v6 {
+  aspect-ratio: 1 / 1;
+}
+
+.v2,
+.v7 {
+  aspect-ratio: 3 / 4;
+}
+
+.v3,
+.v5 {
+  aspect-ratio: 16 / 11;
+}
+
+.empty {
+  text-align: center;
+  color: var(--ink-700);
+  font-weight: 650;
+  padding: 1rem 0;
+}
+
+.loadMore {
+  display: flex;
+  justify-content: center;
+  padding-top: 0.5rem;
+}
+
+.loadButton {
+  border-radius: 999px;
+  padding: 0.85rem 1.2rem;
+  border: 1px solid rgba(212, 163, 115, 0.30);
+  background: var(--surface);
+  backdrop-filter: blur(10px);
+  font-weight: 750;
+  color: var(--ink-900);
+  transition: transform 160ms ease, border-color 160ms ease;
+}
+
+.loadButton:hover {
+  transform: translateY(-1px);
+  border-color: rgba(212, 163, 115, 0.55);
+}
+
+.loadButton:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(212, 163, 115, 0.24);
+}
+
+@media (min-width: 720px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 1020px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.6rem;
+  }
+}
