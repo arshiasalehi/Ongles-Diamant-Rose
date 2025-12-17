@@ -9,6 +9,26 @@
   box-shadow: 0 26px 70px rgba(26, 20, 35, 0.18);
 }
 
+.frame::before {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  border-radius: 20px;
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: inset 0 0 0 1px rgba(212, 163, 115, 0.12);
+  z-index: 2;
+}
+
+.frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 30% 18%, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0) 55%);
+  z-index: 2;
+}
+
 .image {
   position: absolute;
   inset: 0;
@@ -16,6 +36,7 @@
   height: 100%;
   object-fit: cover;
   transition: opacity 500ms ease;
+  transform: translateZ(0);
 }
 
 .active {
@@ -26,8 +47,57 @@
   opacity: 0;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .image {
-    transition: none;
-  }
+.dots {
+  position: absolute;
+  left: 50%;
+  bottom: max(14px, env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.68);
+  border: 1px solid rgba(214, 177, 191, 0.55);
+  backdrop-filter: blur(10px);
+  z-index: 3;
+}
+
+.dot {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid rgba(27, 26, 20, 0.22);
+  background: rgba(27, 26, 20, 0.18);
+  transition: transform 160ms ease, background-color 160ms ease, border-color 160ms ease, width 160ms ease;
+  cursor: pointer;
+}
+
+.dot:hover {
+  transform: translateY(-1px);
+}
+
+.dot:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(212, 163, 115, 0.22);
+}
+
+.dotActive {
+  width: 22px;
+  background: rgba(27, 26, 20, 0.78);
+  border-color: rgba(27, 26, 20, 0.55);
+}
+
+.dotLabel {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

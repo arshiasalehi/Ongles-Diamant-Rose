@@ -8,6 +8,11 @@
   min-width: 0;
 }
 
+.App-page {
+  min-width: 0;
+  animation: pageEnter 520ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 .App-loading {
   width: min(1120px, calc(100% - 2rem));
   margin: 2.25rem auto;
@@ -17,4 +22,43 @@
   background: var(--surface);
   color: var(--ink-800);
   font-weight: 700;
+  position: relative;
+  overflow: hidden;
+}
+
+.App-loading::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-120%);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.5) 48%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 1.35s ease-in-out infinite;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-120%);
+  }
+  60% {
+    transform: translateX(120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
 }

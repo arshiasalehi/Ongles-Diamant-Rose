@@ -1,4 +1,5 @@
 import Container from '../components/ui/Container';
+import Reveal from '../components/ui/Reveal';
 import GalleryGrid from '../components/GalleryGrid/GalleryGrid';
 import gallery from '../data/gallery.json';
 import { usePageMeta } from '../hooks/usePageMeta';
@@ -15,14 +16,19 @@ export default function GalleryPage() {
     <div className={styles.page}>
       <Container>
         <header className={styles.header}>
-          <h1 className={styles.h1}>Gallery</h1>
-          <p className={styles.lead}>
-            A minimal, frameless grid showcasing new designs and favorite finishes. Use filters to explore instantly.
-          </p>
+          <Reveal>
+            <h1 className={styles.h1}>Gallery</h1>
+          </Reveal>
+          <Reveal delayMs={90}>
+            <p className={styles.lead}>
+              A minimal, frameless grid showcasing new designs and favorite finishes. Use filters to explore instantly.
+            </p>
+          </Reveal>
         </header>
-        <GalleryGrid images={gallery} />
+        <Reveal delayMs={140}>
+          <GalleryGrid images={gallery} />
+        </Reveal>
       </Container>
     </div>
   );
 }
-

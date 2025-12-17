@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from 'react';
-import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion';
 import { formatDate } from '../../utils/formatDate';
 import styles from './ReviewCarousel.module.css';
 
@@ -18,16 +17,14 @@ function Star({ filled }) {
 }
 
 export default function ReviewCarousel({ reviews, intervalMs = 6000 }) {
-  const reducedMotion = usePrefersReducedMotion();
   const items = useMemo(() => (Array.isArray(reviews) ? reviews : []), [reviews]);
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    if (reducedMotion) return;
     if (items.length <= 1) return;
     const id = window.setInterval(() => setIndex((i) => (i + 1) % items.length), intervalMs);
     return () => window.clearInterval(id);
-  }, [items.length, intervalMs, reducedMotion]);
+  }, [items.length, intervalMs]);
 
   const current = items[index];
   if (!current) return null;
@@ -65,4 +62,3 @@ export default function ReviewCarousel({ reviews, intervalMs = 6000 }) {
     </section>
   );
 }
-

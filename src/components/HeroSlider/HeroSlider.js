@@ -1,20 +1,17 @@
 import { useEffect, useMemo, useState } from 'react';
-import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion';
 import styles from './HeroSlider.module.css';
 
 export default function HeroSlider({ images, intervalMs = 3000 }) {
-  const reducedMotion = usePrefersReducedMotion();
   const safeImages = useMemo(() => (Array.isArray(images) ? images.filter(Boolean) : []), [images]);
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    if (reducedMotion) return;
     if (safeImages.length <= 1) return;
     const id = window.setInterval(() => {
       setIndex((current) => (current + 1) % safeImages.length);
     }, intervalMs);
     return () => window.clearInterval(id);
-  }, [safeImages.length, intervalMs, reducedMotion]);
+  }, [safeImages.length, intervalMs]);
 
   if (!safeImages.length) return null;
 
@@ -32,7 +29,24 @@ export default function HeroSlider({ images, intervalMs = 3000 }) {
           decoding="async"
         />
       ))}
+
+      {safeImages.length > 1 ? (
+        <div className={styles.dots} role="tablist" aria-label="Hero image selection">
+          {safeImages.map((img, i) => (
+            <button
+              key={img.src}
+              type="button"
+              role="tab"
+              aria-selected={i === index}
+              aria-label={`Go to slide ${i + 1}`}
+              className={[styles.dot, i === index ? styles.dotActive : ''].filter(Boolean).join(' ')}
+              onClick={() => setIndex(i)}
+            >
+              <span className={styles.dotLabel}>Go to slide {i + 1}</span>
+            </button>
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }
-

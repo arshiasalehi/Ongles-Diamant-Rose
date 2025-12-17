@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Redirecting…</title>
+    <script>
+      (function () {
+        var segmentCount = 1;
+        var l = window.location;
+        var pathSegments = l.pathname.split('/');
+        var base = pathSegments.slice(0, 1 + segmentCount).join('/');
+        var rest = pathSegments.slice(1 + segmentCount).join('/');
+        var redirect =
+          l.protocol +
+          '//' +
+          l.host +
+          base +
+          '/?/' +
+          rest.replace(/&/g, '~and~') +
+          (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+          l.hash;
+        l.replace(redirect);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
+

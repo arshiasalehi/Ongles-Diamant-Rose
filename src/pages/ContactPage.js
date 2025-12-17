@@ -1,5 +1,6 @@
 import Container from '../components/ui/Container';
 import ButtonLink from '../components/ui/ButtonLink';
+import Reveal from '../components/ui/Reveal';
 import { BOOKING_URL } from '../constants';
 import site from '../data/site.json';
 import { usePageMeta } from '../hooks/usePageMeta';
@@ -19,19 +20,25 @@ export default function ContactPage() {
     <div className={styles.page}>
       <Container>
         <header className={styles.header}>
-          <h1 className={styles.h1}>Contact</h1>
-          <p className={styles.lead}>
-            For appointments, please use our external booking platform. For questions, send us a message below.
-          </p>
-          <div className={styles.headerCtas}>
-            <ButtonLink href={BOOKING_URL} target="_blank" rel="noreferrer" variant="primary">
-              Book Now
-            </ButtonLink>
-          </div>
+          <Reveal>
+            <h1 className={styles.h1}>Contact</h1>
+          </Reveal>
+          <Reveal delayMs={90}>
+            <p className={styles.lead}>
+              For appointments, please use our external booking platform. For questions, send us a message below.
+            </p>
+          </Reveal>
+          <Reveal delayMs={140}>
+            <div className={styles.headerCtas}>
+              <ButtonLink href={BOOKING_URL} target="_blank" rel="noreferrer" variant="primary">
+                Book Now
+              </ButtonLink>
+            </div>
+          </Reveal>
         </header>
 
         <div className={styles.layout}>
-          <section className={styles.info} aria-label="Salon contact information">
+          <Reveal as="section" className={styles.info} aria-label="Salon contact information" delayMs={80}>
             <div className={styles.infoCard}>
               <h2 className={styles.h2}>Salon Info</h2>
               <div className={styles.infoRow}>
@@ -69,14 +76,12 @@ export default function ContactPage() {
                 ))}
               </ul>
             </div>
-          </section>
+          </Reveal>
 
-          <section className={styles.formWrap} aria-label="Contact form">
+          <Reveal as="section" className={styles.formWrap} aria-label="Contact form" delayMs={140}>
             <div className={styles.formCard}>
               <h2 className={styles.h2}>Send a Message</h2>
-              <p className={styles.formLead}>
-                This form is powered by Formspree. 
-              </p>
+              <p className={styles.formLead}>This form is powered by Formspree.</p>
 
               <form className={styles.form} action={FORMSPREE_ENDPOINT} method="POST">
                 <div className={styles.field}>
@@ -105,13 +110,7 @@ export default function ContactPage() {
                     <label className={styles.fieldLabel} htmlFor="phone">
                       Phone
                     </label>
-                    <input
-                      className={styles.input}
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      autoComplete="tel"
-                    />
+                    <input className={styles.input} id="phone" name="phone" type="tel" autoComplete="tel" />
                   </div>
                 </div>
 
@@ -131,10 +130,9 @@ export default function ContactPage() {
                 </div>
               </form>
             </div>
-          </section>
+          </Reveal>
         </div>
       </Container>
     </div>
   );
 }
-
